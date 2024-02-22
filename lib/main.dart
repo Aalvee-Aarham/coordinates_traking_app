@@ -81,10 +81,18 @@ class _CoordinateDetectorState extends State<CoordinateDetector> {
 
     final timestamp = DateTime.now();
 
+    final newCoordinates = '($x, $y) at $timestamp';
+
     setState(() {
-      coordinates = '($x, $y) at $timestamp';
+      coordinates = newCoordinates;
     });
 
-    print('Coordinates: $coordinates');
+    // Show Snackbar
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(newCoordinates),
+        duration: const Duration(milliseconds: 1000),
+      ),
+    );
   }
 }
